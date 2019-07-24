@@ -12,4 +12,7 @@ How to start the app
 
 ```
 python manage.py runserver
-```
+```  
+
+Database:
+install postgis, create database with postgres and add extention postgis

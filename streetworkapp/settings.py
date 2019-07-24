@@ -12,30 +12,20 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-from django.core.exceptions import ImproperlyConfigured
-
-
-# Handling Key Import Errors
-def get_env_variable(var_name):
-    """ Get the environment variable or return exception """
-    try:
-        return os.environ[var_name]
-    except KeyError:
-        error_msg = "Set the %s environment variable" % var_name
-        raise ImproperlyConfigured(error_msg)
+from dotenv import load_dotenv
+load_dotenv()
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Get ENV VARIABLES key
-ENV_ROLE = get_env_variable('ENV_ROLE')
+ENV_ROLE = os.getenv('ENV_ROLE')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_env_variable('STREETWORK_PASS')
+SECRET_KEY = os.getenv('STREETWORK_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -52,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'places',
 ]
 
 MIDDLEWARE = [
@@ -90,8 +81,12 @@ WSGI_APPLICATION = 'streetworkapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'sw',
+        'USER': os.getenv('STREETWORK_DB_USER'),
+        'PASSWORD': os.getenv('STREETWORK_DB_PASS'),
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
