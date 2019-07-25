@@ -1,10 +1,42 @@
 {% extends 'base.html' %}
 
+
+{% load leaflet_tags %}
+
+{% block head %}
+    {% leaflet_css %}
+    {% leaflet_js %}
+{% endblock %}
+
 {% block body %}
-    <h2>Places (to be places on a map)</h2>
-    <ul>
-        {% for place in object_list %}
-            <li>{{ place.location }}</li>
-        {% endfor %}
-    </ul>
+
+    <h2>Places </h2>
+
+    <div>
+        {% leaflet_map "main" callback="map_init" %}
+    </div>
+
+    <script type="text/javascript">
+        function map_init(map, options) {
+            var zoom = 8
+            // get point lat and lon and set marker on a map
+            {% for place in object_list %}
+                var lon = {{ place.location.x }};
+                var lat = {{ place.location.y }};
+                L.marker([lat, lon]).addTo(map);
+            {% endfor %}
+
+            // zoom to the first element on a map
+            {% if object_list %}
+                var lon = {{ object_list.0.location.x }};
+                var lat = {{ object_list.0.location.y }};
+            {% else %}
+                var lon = 54;
+                var lat = 49;
+             {% endif %}
+            map.setView([lat, lon], zoom);
+
+
+        }
+    </script>
 {% endblock %}

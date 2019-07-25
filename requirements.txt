@@ -2,4 +2,4 @@ Django>=2.2.3
 psycopg2
 python-dotenv
 django-location-field
-leaflet
+django-leaflet
