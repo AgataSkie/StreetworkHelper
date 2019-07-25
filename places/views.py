@@ -1,8 +1,15 @@
-# from django.shortcuts import render
+from django.views.generic import CreateView, ListView
 
-# Create your views here.
-from django.http import HttpResponse
+from .models import Place
 
 
-def index(request):
-    return HttpResponse("Hello, world. My homepage goes here.")
+class PlaceListView(ListView):
+    model = Place
+
+
+class PlaceCreateView(CreateView):
+    model = Place
+    fields = (
+        'city',
+        'location',
+    )

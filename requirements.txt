@@ -1,3 +1,4 @@
 Django==2.2.2
 psycopg2
 python-dotenv
+django-location-field

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>Places (to be places on a map)</h2>
+    <ul>
+        {% for place in object_list %}
+            <li>{{ place.location }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,14 +1,21 @@
-This app is a pro bono project to help streetworkers work efficiently and share 
+## About the project
+This app is a pro bono project to help streetworkers, who help homeless people, work efficiently and share
 information among themselves.
 
-Instalation
+Main function of the app will be an interactive map with location points and information about the places gathered
+from forms and displayed back to the users.
+
+Currently I work on it as the only developer, doing also analysis of client needs.
+
+## Instalation
 ```
 pip install -r requirements.txt
+install postgres and python-dotenv with sudo
 ```
 
 Than export STREETWORK_PASS and ENV_ROLE.
 
-How to start the app
+## How to start the app
 
 ```
 python manage.py runserver
@@ -16,3 +23,7 @@ python manage.py runserver
 
 Database:
 install postgis, create database with postgres and add extention postgis
+
+## Current project state:
+Admin can add a place location from a map
+On a homepage there is a bullet list of location points from db
