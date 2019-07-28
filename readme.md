@@ -25,5 +25,11 @@ Database:
 install postgis, create database with postgres and add extention postgis
 
 ## Current project state:
-Admin can add a place location from a map
-On a homepage there is a bullet list of location points from db
+- A place location can be added from django-admin
+- Hhomepage shows a map with location points from db
+
+## Next steps
+- Form to add new points from the homepage
+- Add a model and a form to gather information about the place
+- Add functionality to display information about the place when marker on the map is clicked
+- Users and permission levels
