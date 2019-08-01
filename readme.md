@@ -13,7 +13,11 @@ Python 3.6 and postgres are required
 pip install -r requirements.txt
 ```
 
-Than export STREETWORK_PASS and ENV_ROLE.
+Than export values for:
+STREETWORK_SECRET_KEY
+ENV_ROLE=development
+STREETWORK_DB_USER
+STREETWORK_DB_PASS
 
 ## How to start the app
 
