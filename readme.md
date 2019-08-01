@@ -8,9 +8,9 @@ from forms and displayed back to the users.
 Currently I work on it as the only developer, doing also analysis of client needs.
 
 ## Instalation
+Python 3.6 and postgres are required
 ```
 pip install -r requirements.txt
-install postgres and python-dotenv with sudo
 ```
 
 Than export STREETWORK_PASS and ENV_ROLE.
@@ -20,9 +20,19 @@ Than export STREETWORK_PASS and ENV_ROLE.
 ```
 python manage.py runserver
 ```  
+go to 127.0.0.1:8000/places to check if the app has started.
 
-Database:
-install postgis, create database with postgres and add extention postgis
+Then run:
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+You can then crate superuser with:
+```
+python manage.py createsuperuser
+```
+an access 127.0.0.1:8000/admin to add/change places
+and homepage 127.0.0.1:8000/places to see added points on a map.
 
 ## Current project state:
 - A place location can be added from django-admin
